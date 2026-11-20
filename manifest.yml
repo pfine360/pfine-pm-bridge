@@ -1,0 +1,27 @@
+modules:
+  jira:adminPage:
+    - key: pfine-pm-bridge-hello-world-admin-page
+      resource: main
+      resolver:
+        function: resolver
+      title: PFine Organisation PM
+  function:
+    - key: resolver
+      handler: index.handler
+resources:
+  - key: main
+    path: static/hello-world/build
+permissions:
+  scopes:
+    - read:jira-work
+    - write:jira-work
+  external:
+    fetch:
+      backend:
+        - 'https://www.pfine360.com'
+app:
+  runtime:
+    name: nodejs24.x
+    memoryMB: 256
+    architecture: arm64
+  id: ari:cloud:ecosystem::app/b1645066-9f2b-49e4-aa53-38b2a1446d96
